@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType} from 'vue'
+import {defineComponent, PropType, toRefs} from 'vue'
 import type {Post} from "../../shared";
 
 export default defineComponent({
@@ -21,7 +21,7 @@ export default defineComponent({
 
       setup(props) {
 
-        let post = props.post;
+        let {post} = toRefs(props)
 
         return {
           post

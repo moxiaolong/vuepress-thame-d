@@ -48,6 +48,7 @@ export default defineComponent({
         //刷新页面
         let flushPage = () => {
           //根据编码截取数组
+          console.log(sourcePosts.slice((pageNum.value - 1) * pageSize.value, pageNum.value * pageSize.value))
           postsReactive.posts = sourcePosts.slice((pageNum.value - 1) * pageSize.value, pageNum.value * pageSize.value)
 
           //路由跳转
