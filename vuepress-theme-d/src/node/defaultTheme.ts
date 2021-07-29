@@ -35,6 +35,8 @@ export const defaultTheme: Theme<DefaultThemeOptions> = ({
     //存放文章列表
     let posts: Post[] = []
 
+    //生成文章标签
+
     return {
         //页面信息回调 获取文章列表
         extendsPageData: (page, app) => {
