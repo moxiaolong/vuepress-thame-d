@@ -91,7 +91,7 @@
 import {defineComponent, computed, toRefs} from "vue";
 
 export default defineComponent({
-  emits: ['getCurrentPage'],
+  emits: ['gotoPage'],
   props: {
     total: { // 总长度
       type: Number,
@@ -127,7 +127,7 @@ export default defineComponent({
     }
 
     let handleEmit = (i) => {
-      context.emit('getCurrentPage', i)
+      context.emit('gotoPage', i)
     }
 
     let goNext = () => {

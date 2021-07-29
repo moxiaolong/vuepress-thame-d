@@ -8,7 +8,7 @@
         :pageSize="pageSize"
         :pageNum="pageNum"
         v-show="Math.ceil(total / pageSize) > 1"
-        @getCurrentPage="gotoPage"
+        @gotoPage="gotoPage"
     />
   </div>
 </template>
@@ -48,7 +48,6 @@ export default defineComponent({
         //刷新页面
         let flushPage = () => {
           //根据编码截取数组
-          console.log(sourcePosts.slice((pageNum.value - 1) * pageSize.value, pageNum.value * pageSize.value))
           postsReactive.posts = sourcePosts.slice((pageNum.value - 1) * pageSize.value, pageNum.value * pageSize.value)
 
           //路由跳转
@@ -62,21 +61,13 @@ export default defineComponent({
 
         flushPage()
 
-        let nextPage = () => {
-          pageNum.value++
-          flushPage()
-        }
-        let previousPage = () => {
-          pageNum.value--
-          flushPage()
-        }
         let gotoPage = (i) => {
           pageNum.value = i
           flushPage()
         }
 
 
-        return {postsReactive, pageNum, nextPage, previousPage, total, pageSize, gotoPage}
+        return {postsReactive, pageNum,  total, pageSize, gotoPage}
       },
 
     }

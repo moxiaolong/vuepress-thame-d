@@ -1,36 +1,38 @@
 <template>
   <main class="home" :aria-labelledby="heroText ? 'main-title' : undefined">
     <header class="hero">
-      <img v-if="heroImage" :src="heroImage" :alt="heroAlt"/>
 
-      <h1 v-if="heroText" id="main-title">
-        {{ heroText }}
-      </h1>
+      <div v-if="isFirstPage">
+        <img v-if="heroImage" :src="heroImage" :alt="heroAlt"/>
+        <h1 v-if="heroText" id="main-title">
+          {{ heroText }}
+        </h1>
+        <p v-if="tagline" class="description">
+          {{ tagline }}
+        </p>
+        <p v-if="actions.length" class="actions">
+          <NavLink
+              v-for="action in actions"
+              :key="action.text"
+              class="action-button"
+              :class="[action.type]"
+              :item="action"
+          />
+        </p>
+      </div>
 
-      <p v-if="tagline" class="description">
-        {{ tagline }}
-      </p>
 
-      <p v-if="actions.length" class="actions">
-        <NavLink
-            v-for="action in actions"
-            :key="action.text"
-            class="action-button"
-            :class="[action.type]"
-            :item="action"
-        />
-      </p>
     </header>
 
-<!--    <div v-if="features.length" class="features">-->
-<!--      <div v-for="feature in features" :key="feature.title" class="feature">-->
-<!--        <h2>{{ feature.title }}</h2>-->
-<!--        <p>{{ feature.details }}</p>-->
-<!--      </div>-->
-<!--    </div>-->
+    <!--    <div v-if="features.length" class="features">-->
+    <!--      <div v-for="feature in features" :key="feature.title" class="feature">-->
+    <!--        <h2>{{ feature.title }}</h2>-->
+    <!--        <p>{{ feature.details }}</p>-->
+    <!--      </div>-->
+    <!--    </div>-->
 
     <div class="theme-default-content custom">
-<!--      <Content/>-->
+      <!--      <Content/>-->
       <post-list/>
     </div>
 
@@ -44,6 +46,7 @@
 
 <script lang="ts">
 import {computed, defineComponent} from 'vue'
+import {useRoute, useRouter} from 'vue-router'
 import {
   usePageFrontmatter,
   useSiteLocaleData,
@@ -54,6 +57,7 @@ import type {DefaultThemeHomePageFrontmatter} from '../../shared'
 import NavLink from './NavLink.vue'
 import {Post} from "../../shared/post";
 import PostList from "./PostList.vue";
+import {useRoute} from "vue-router";
 
 
 export default defineComponent({
@@ -65,6 +69,9 @@ export default defineComponent({
   },
 
   setup() {
+
+    let route = useRoute();
+
     const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
     const siteLocale = useSiteLocaleData()
 
@@ -123,6 +130,11 @@ export default defineComponent({
 
     const footerHtml = computed(() => frontmatter.value.footerHtml)
 
+    const isFirstPage = computed(() => {
+
+      return !(Number(route.query.p) > 1)
+    })
+
     return {
       heroImage,
       heroAlt,
@@ -132,6 +144,7 @@ export default defineComponent({
       features,
       footer,
       footerHtml,
+      isFirstPage
     }
   },
 })
