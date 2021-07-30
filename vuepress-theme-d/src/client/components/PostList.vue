@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, reactive, ref, watchEffect} from 'vue'
+import {computed, defineComponent, ref, watchEffect} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
 import type {Post} from "../../shared"
 import PostCard from "./PostCard.vue"
@@ -33,7 +33,6 @@ export default defineComponent({
         let route = useRoute();
         let router = useRouter();
         let total = sourcePosts.length + 1
-
         let pageNum = ref(1)
         let pageSize = ref(10)
         let postsReactive = computed(() => {
@@ -43,8 +42,8 @@ export default defineComponent({
         let gotoPage = (i) => {
           //路由跳转
           router.push({
-            path: "/",
             query: {
+              ...route.params,
               p: i
             }
           })
@@ -52,20 +51,19 @@ export default defineComponent({
 
         watchEffect(
             () => {
-              console.log("watch")
-              //从路由获取页码
-              if (route.query.p != null && pageNum.toString() !== route.query.p) {
-                pageNum.value = Number(route.query.p)
+              //记一个bug 从/a跳转到/b 再回退时setup中route.path还是/b,结束后才变成/a,所以为了取到回退后参数中的p值,这里监听路由path变化,并跳过非首页路径
+              if (route.path != "/") {
+                return;
               }
+              if (route.query.p == null) {
+                return;
+              }
+              //从路由获取页码
+              pageNum.value = Number(route.query.p)
             }
         )
 
-
         return {postsReactive, pageNum, total, pageSize, gotoPage}
-      },
-
-      beforeCreate() {
-        //this.flushPage()
       }
     }
 )

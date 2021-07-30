@@ -132,7 +132,7 @@ export default defineComponent({
 
     let goNext = () => {
       if (pageNum.value < pages.value) {
-        handleEmit(++pageNum.value)
+        handleEmit(pageNum.value + 1)
       }
     }
 
@@ -143,7 +143,7 @@ export default defineComponent({
     }
     let goPre = () => {
       if (pageNum.value > 1) {
-        handleEmit(--pageNum.value)
+        handleEmit(pageNum.value - 1)
       }
     }
 
