@@ -57,6 +57,7 @@
 }
 
 .theme-container {
+  background-color: var(--bodyBg);
   &.sidebar-open {
     .sidebar-mask {
       display: block;
@@ -135,7 +136,7 @@ h6 {
 
 .theme-default-content.custom {
   padding: 0;
-  margin: 0;
+  margin: 1rem 0 0;
 
   img {
     max-width: 100%;

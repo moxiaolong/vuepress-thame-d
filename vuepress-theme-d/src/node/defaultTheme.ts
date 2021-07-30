@@ -75,7 +75,7 @@ export const defaultTheme: Theme<DefaultThemeOptions> = ({
                 '@vuepress/active-header-links',
                 resolveActiveHeaderLinksPluginOptions(themePlugins),
             ],
-            ['@vuepress/back-to-top', themePlugins.backToTop !== false],
+            // ['@vuepress/back-to-top',false],
             [
                 '@vuepress/container',
                 resolveContainerPluginOptions(themePlugins, localeOptions, 'tip'),

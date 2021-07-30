@@ -1,7 +1,27 @@
 <template>
-  <div>
-    <post-card v-for="item in postsReactive" :post="item"/>
 
+  <div class="postlist">
+    <div class="postcards">
+      <transition-group name="postcard" tag="div" appear>
+        <div class="postcard" v-for="(post,index) in postsReactive" :key="post.path">
+          <h2>
+            <router-link :to="post.path">{{ post.title }}</router-link>
+          </h2>
+          <div class="article-info">
+            <span>日期:{{ post.date }}</span>
+            <span>目录{{ post.dir }}</span>
+          </div>
+          <div class="excerpt-wrapper" v-if="post.excerpt">
+            <div class="excerpt" v-html="post.excerpt"/>
+            <router-link
+                :to="post.path"
+                class="readmore iconfont icon-jiantou-you"
+            >阅读全文
+            </router-link>
+          </div>
+        </div>
+      </transition-group>
+    </div>
     <Pagination
         :total="total"
         :pageSize="pageSize"
@@ -10,12 +30,13 @@
         @gotoPage="gotoPage"
     />
   </div>
+
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, ref, watchEffect} from 'vue'
+import {computed, defineComponent, ref, watchEffect, reactive} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
-import type {Post} from "../../shared"
+import type {Post} from "../../../shared"
 import PostCard from "./PostCard.vue"
 import Pagination from "./Pagination.vue"
 
@@ -62,6 +83,7 @@ export default defineComponent({
               pageNum.value = Number(route.query.p)
             }
         )
+
 
         return {postsReactive, pageNum, total, pageSize, gotoPage}
       }

@@ -1,0 +1,71 @@
+@import '_variables';
+@import '_wrapper';
+
+.pagination {
+  position: relative;
+  height: 60px;
+  text-align: center;
+  margin-bottom: 4rem;
+
+  span {
+    line-height: 1rem;
+    opacity: 0.9;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--c-text-accent);
+    }
+
+    &.ellipsis {
+      opacity: 0.5;
+
+      &::before {
+        content: '...';
+        font-size: 1.2rem;
+      }
+    }
+
+
+  }
+
+  > span {
+    position: absolute;
+    top: 0;
+    padding: 1rem 1.2rem;
+    font-size: 0.95rem;
+
+    &.disabled {
+      color: rgba(125, 125, 125, 0.5)
+    }
+
+    &.prev {
+      left: 0;
+      border-top-right-radius: 32px;
+      border-bottom-right-radius: 32px;
+    }
+
+    &.next {
+      right: 0;
+      border-top-left-radius: 32px;
+      border-bottom-left-radius: 32px;
+    }
+
+  }
+
+  p {
+    display: inline;
+    line-height: 0.95rem;
+  }
+
+  .pagination-list {
+    span {
+      display: inline-block;
+      width: 2.5rem;
+      height: 2.5rem;
+      line-height: 2.5rem;
+      margin: 0.3rem;
+    }
+  }
+
+
+}

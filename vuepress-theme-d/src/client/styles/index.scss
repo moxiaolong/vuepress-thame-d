@@ -16,6 +16,7 @@
 @use 'sr-only';
 @use 'toc';
 @use 'transitions';
-@use "postcard";
+@use "pagenation";
+@use "postlist";
 
 @use '@vuepress/plugin-palette/style';

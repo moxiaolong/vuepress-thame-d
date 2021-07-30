@@ -58,7 +58,7 @@ import {
 import { useRouter } from 'vue-router'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import type { DefaultThemePageFrontmatter } from '../../shared'
-import Home from '../components/Home.vue'
+import Home from '../components/home/Home.vue'
 import Page from '../components/Page.vue'
 import Navbar from '../components/Navbar.vue'
 import Sidebar from '../components/Sidebar.vue'

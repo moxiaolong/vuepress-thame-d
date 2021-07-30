@@ -44,18 +44,16 @@
 
 <script lang="ts">
 import {computed, defineComponent} from 'vue'
-import {useRoute, useRouter} from 'vue-router'
+import {useRoute} from 'vue-router'
 import {
   usePageFrontmatter,
   useSiteLocaleData,
   withBase,
 } from '@vuepress/client'
 import {isArray} from '@vuepress/shared'
-import type {DefaultThemeHomePageFrontmatter} from '../../shared'
-import NavLink from './NavLink.vue'
-import {Post} from "../../shared/post";
+import type {DefaultThemeHomePageFrontmatter} from '../../../shared'
+import NavLink from '../NavLink.vue'
 import PostList from "./PostList.vue";
-import {useRoute} from "vue-router";
 
 
 export default defineComponent({
