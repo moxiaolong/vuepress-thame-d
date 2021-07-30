@@ -1,9 +1,6 @@
 import {Post} from "./post";
 
 export interface Dir extends Post {
-    date: string
-    title?: string
-    excerpt?: string
-    path?: string
+    //包含内容
     child?: Post[]
 }

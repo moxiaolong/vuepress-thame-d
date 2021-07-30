@@ -20,8 +20,6 @@
           />
         </p>
       </div>
-
-
     </header>
 
     <!--    <div v-if="features.length" class="features">-->
@@ -69,6 +67,7 @@ export default defineComponent({
   },
 
   setup() {
+    console.log("home setup")
 
     let route = useRoute();
 
@@ -131,7 +130,6 @@ export default defineComponent({
     const footerHtml = computed(() => frontmatter.value.footerHtml)
 
     const isFirstPage = computed(() => {
-
       return !(Number(route.query.p) > 1)
     })
 

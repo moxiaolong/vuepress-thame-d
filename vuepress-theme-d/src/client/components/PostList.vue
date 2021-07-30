@@ -1,7 +1,6 @@
 <template>
   <div>
-    postList
-    <post-card v-for="item in postsReactive.posts" :post="item"/>
+    <post-card v-for="item in postsReactive" :post="item"/>
 
     <Pagination
         :total="total"
@@ -14,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, reactive, ref} from 'vue'
+import {computed, defineComponent, reactive, ref, watchEffect} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
 import type {Post} from "../../shared"
 import PostCard from "./PostCard.vue"
@@ -30,46 +29,44 @@ export default defineComponent({
         Pagination
       },
       setup() {
+        console.log("postList setup")
         let route = useRoute();
         let router = useRouter();
         let total = sourcePosts.length + 1
 
         let pageNum = ref(1)
         let pageSize = ref(10)
-        let postsReactive: { posts: Post[] } = reactive({posts: []})
+        let postsReactive = computed(() => {
+          return sourcePosts.slice((pageNum.value - 1) * pageSize.value, pageNum.value * pageSize.value)
+        })
 
-
-        //从路由获取页码
-        if (route.query.p != null && pageNum.toString() !== route.query.p) {
-          pageNum.value = Number(route.query.p)
-        }
-
-
-        //刷新页面
-        let flushPage = () => {
-          //根据编码截取数组
-          postsReactive.posts = sourcePosts.slice((pageNum.value - 1) * pageSize.value, pageNum.value * pageSize.value)
-
+        let gotoPage = (i) => {
           //路由跳转
           router.push({
+            path: "/",
             query: {
-              ...route.query,
-              p: pageNum.value
+              p: i
             }
           })
         }
 
-        flushPage()
+        watchEffect(
+            () => {
+              console.log("watch")
+              //从路由获取页码
+              if (route.query.p != null && pageNum.toString() !== route.query.p) {
+                pageNum.value = Number(route.query.p)
+              }
+            }
+        )
 
-        let gotoPage = (i) => {
-          pageNum.value = i
-          flushPage()
-        }
 
-
-        return {postsReactive, pageNum,  total, pageSize, gotoPage}
+        return {postsReactive, pageNum, total, pageSize, gotoPage}
       },
 
+      beforeCreate() {
+        //this.flushPage()
+      }
     }
 )
 

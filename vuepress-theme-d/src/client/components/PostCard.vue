@@ -1,7 +1,12 @@
 <template>
-  <div>
-    postcard
-    {{ post.title }}
+  <div class="postcard">
+    <h2>
+      <router-link :to="post.path">{{ post.title }}</router-link>
+    </h2>
+    <span>日期:{{post.date}}</span>
+    <span>目录{{post.dir}}</span>
+
+
   </div>
 </template>
 

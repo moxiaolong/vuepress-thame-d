@@ -1,20 +1,20 @@
 <template>
   <header ref="navbar" class="navbar">
-    <ToggleSidebarButton @toggle="$emit('toggle-sidebar')" />
+    <ToggleSidebarButton @toggle="$emit('toggle-sidebar')"/>
 
     <span ref="siteBrand">
-      <RouterLink :to="siteBrandLink">
+      <RouterLink to="/">
         <img
-          v-if="siteBrandLogo"
-          class="logo"
-          :src="withBase(siteBrandLogo)"
-          :alt="siteBrandTitle"
+            v-if="siteBrandLogo"
+            class="logo"
+            :src="withBase(siteBrandLogo)"
+            :alt="siteBrandTitle"
         />
 
         <span
-          v-if="siteBrandTitle"
-          class="site-name"
-          :class="{ 'can-hide': siteBrandLogo }"
+            v-if="siteBrandTitle"
+            class="site-name"
+            :class="{ 'can-hide': siteBrandLogo }"
         >
           {{ siteBrandTitle }}
         </span>
@@ -22,23 +22,23 @@
     </span>
 
     <div class="navbar-links-wrapper" :style="linksWrapperStyle">
-      <slot name="before" />
+      <slot name="before"/>
 
-      <NavbarLinks class="can-hide" />
+      <NavbarLinks class="can-hide"/>
 
-      <slot name="after" />
+      <slot name="after"/>
 
-      <ToggleDarkModeButton v-if="enableDarkMode" />
+      <ToggleDarkModeButton v-if="enableDarkMode"/>
 
-      <NavbarSearch />
+      <NavbarSearch/>
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
-import { useRouteLocale, useSiteLocaleData, withBase } from '@vuepress/client'
-import { useThemeLocaleData } from '../composables'
+import {computed, onMounted, ref} from 'vue'
+import {useRouteLocale, useSiteLocaleData, withBase} from '@vuepress/client'
+import {useThemeLocaleData} from '../composables'
 import NavbarLinks from './NavbarLinks.vue'
 import ToggleDarkModeButton from './ToggleDarkModeButton.vue'
 import ToggleSidebarButton from './ToggleSidebarButton.vue'
@@ -52,7 +52,7 @@ const themeLocale = useThemeLocaleData()
 const navbar = ref<HTMLElement | null>(null)
 const siteBrand = ref<HTMLElement | null>(null)
 const siteBrandLink = computed(
-  () => themeLocale.value.home || routeLocale.value
+    () => themeLocale.value.home || routeLocale.value
 )
 const siteBrandLogo = computed(() => themeLocale.value.logo)
 const siteBrandTitle = computed(() => siteLocale.value.title)
@@ -73,16 +73,16 @@ onMounted(() => {
   // refer to _variables.scss
   const MOBILE_DESKTOP_BREAKPOINT = 719
   const navbarHorizontalPadding =
-    getCssValue(navbar.value, 'paddingLeft') +
-    getCssValue(navbar.value, 'paddingRight')
+      getCssValue(navbar.value, 'paddingLeft') +
+      getCssValue(navbar.value, 'paddingRight')
   const handleLinksWrapWidth = (): void => {
     if (window.innerWidth <= MOBILE_DESKTOP_BREAKPOINT) {
       linksWrapperMaxWidth.value = 0
     } else {
       linksWrapperMaxWidth.value =
-        navbar.value!.offsetWidth -
-        navbarHorizontalPadding -
-        (siteBrand.value?.offsetWidth || 0)
+          navbar.value!.offsetWidth -
+          navbarHorizontalPadding -
+          (siteBrand.value?.offsetWidth || 0)
     }
   }
   handleLinksWrapWidth()
@@ -93,8 +93,8 @@ onMounted(() => {
 function getCssValue(el: HTMLElement | null, property: string): number {
   // NOTE: Known bug, will return 'auto' if style value is 'auto'
   const val = el?.ownerDocument?.defaultView?.getComputedStyle(el, null)?.[
-    property
-  ]
+      property
+      ]
   const num = Number.parseInt(val, 10)
   return Number.isNaN(num) ? 0 : num
 }

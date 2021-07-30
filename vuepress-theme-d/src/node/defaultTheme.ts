@@ -40,8 +40,8 @@ export const defaultTheme: Theme<DefaultThemeOptions> = ({
     return {
         //页面信息回调 获取文章列表
         extendsPageData: (page, app) => {
-            // && page.date !== "0000-00-00"
-            if (page.filePathRelative != null && page.filePathRelative.endsWith(".md")) {
+
+            if (page.filePathRelative != null && page.filePathRelative.endsWith(".md")&& page.date !== "0000-00-00") {
                 posts.push({
                     date: page.date,
                     title: page.title,

@@ -27,7 +27,7 @@ export default defineComponent({
     PageNav,
   },
   setup(){
-    console.log(2)
+    console.log("page setup")
   }
 
 })
