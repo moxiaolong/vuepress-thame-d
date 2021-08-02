@@ -1,7 +1,10 @@
 {
   "extends": "./tsconfig.base.json",
   "references": [
-    { "path": "./vuepress-theme-d/tsconfig.build.json" }
+    {
+      "path": "./vuepress-theme-d/tsconfig.build.json"
+    }
   ],
-  "files": []
+  "files": [
+  ]
 }

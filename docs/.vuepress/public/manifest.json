@@ -1,7 +1,7 @@
 {
-  "name": "VuePress",
-  "short_name": "VuePress",
-  "description": "Vue-powered Static Site Generator",
+  "name": "Dra-M",
+  "short_name": "Dra-M",
+  "description": "Dragon Mo的一些随想",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#fff",

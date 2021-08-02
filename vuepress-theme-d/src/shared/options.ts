@@ -93,28 +93,28 @@ export interface DefaultThemeLocaleData extends LocaleData {
    */
   repoLabel?: string
 
-  /**
-   * Navbar language selection config
-   *
-   * Text of the language selection dropdown
-   */
-  selectLanguageText?: string
-
-  /**
-   * Navbar language selection config
-   *
-   * Aria label of of the language selection dropdown
-   */
-  selectLanguageAriaLabel?: string
-
-  /**
-   * Navbar language selection config
-   *
-   * Language name of current locale
-   *
-   * Displayed inside the language selection dropdown
-   */
-  selectLanguageName?: string
+  // /**
+  //  * Navbar language selection config
+  //  *
+  //  * Text of the language selection dropdown
+  //  */
+  // selectLanguageText?: string
+  //
+  // /**
+  //  * Navbar language selection config
+  //  *
+  //  * Aria label of of the language selection dropdown
+  //  */
+  // selectLanguageAriaLabel?: string
+  //
+  // /**
+  //  * Navbar language selection config
+  //  *
+  //  * Language name of current locale
+  //  *
+  //  * Displayed inside the language selection dropdown
+  //  */
+  // selectLanguageName?: string
 
   /**
    * Sidebar config

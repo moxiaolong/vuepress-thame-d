@@ -1,10 +1,10 @@
-import type { NavbarConfig } from '@vuepress/theme-default'
+import type { NavbarConfig } from '@vuepress/vuepress-theme-d'
 import { version } from '../meta'
 
 export const zh: NavbarConfig = [
   {
     text: '指南',
-    link: '/zh/guide/',
+    link: 'javascript:alert(1);',
   },
   {
     text: '参考',
@@ -12,7 +12,7 @@ export const zh: NavbarConfig = [
       {
         text: 'VuePress',
         children: [
-          '/zh/reference/cli.md',
+          '/baidu.com',
           '/zh/reference/config.md',
           '/zh/reference/frontmatter.md',
           '/zh/reference/components.md',
