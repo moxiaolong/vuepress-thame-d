@@ -29,6 +29,7 @@ export const sidebarItemsSymbol: InjectionKey<SidebarItemsRef> = Symbol(
  * Inject sidebar items global computed
  */
 export const useSidebarItems = (): SidebarItemsRef => {
+  console.log("useSidebarItems")
   const sidebarItems = inject(sidebarItemsSymbol)
   if (!sidebarItems) {
     throw new Error('useSidebarItems() is called without provider.')

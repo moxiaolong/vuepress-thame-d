@@ -48,6 +48,7 @@ export default defineComponent({
   },
 
   setup(props) {
+    console.log("navlink")
     const route = useRoute()
     const site = useSiteData()
     const { item } = toRefs(props)

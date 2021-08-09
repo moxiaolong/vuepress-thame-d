@@ -1,21 +1,17 @@
 @import '_variables';
-
+@import "_wrapper.scss";
 
 .postlist {
   .postcards {
     margin-bottom: 4rem;
 
     .postcard {
+      @extend %wrapper-little;
+      @extend %hover-shadow;
       position: relative;
-      padding: 1rem 1.5rem;
-      transition: all .3s;
-      background-color: var(--c-bg-light);
-      box-shadow: var(--shadow-box);
-      margin: 0 0 0.9rem 0.9rem;
 
-      &:hover {
-        box-shadow: var(--shadow-box-hover);
-      }
+      margin-top: 0.9rem;
+      margin-bottom: 0.9rem;
 
 
       &::before {

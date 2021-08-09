@@ -2,8 +2,10 @@
 @import '_wrapper';
 
 .page {
-  padding-top: var(--navbar-height);
-  padding-left: var(--sidebar-width);
+  padding-top: calc(var(--navbar-height) + .8rem);
+  padding-left: calc(var(--sidebar-width) + .8rem);
+  padding-right: .8rem;
+  background-color: var(--c-bg);
 }
 
 .navbar {
@@ -35,12 +37,15 @@
   scrollbar-color: var(--c-brand) var(--c-border);
   background-color: var(--c-bg-sidebar);
   transition: background-color ease 0.3s, border-right-color ease 0.3s;
+
   &::-webkit-scrollbar {
     width: 7px;
   }
+
   &::-webkit-scrollbar-track {
     background-color: var(--c-border);
   }
+
   &::-webkit-scrollbar-thumb {
     background-color: var(--c-brand);
   }
@@ -58,6 +63,7 @@
 
 .theme-container {
   background-color: var(--bodyBg);
+
   &.sidebar-open {
     .sidebar-mask {
       display: block;
@@ -122,8 +128,8 @@ h6 {
 
 .theme-default-content:not(.custom) {
   @extend %wrapper;
+  background-color: var(--c-bg-light);
 
-  padding-top: 0;
 
   a:hover {
     text-decoration: underline;
@@ -151,7 +157,7 @@ h6 {
   }
 
   .page {
-    padding-left: var(--sidebar-width-mobile);
+    padding-left: calc(var(--sidebar-width-mobile) + .8rem);
   }
 }
 
@@ -165,7 +171,7 @@ h6 {
   }
 
   .page {
-    padding-left: 0;
+    padding:0;
   }
 
   .theme-container {

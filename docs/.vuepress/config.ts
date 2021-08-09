@@ -92,7 +92,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 navbar: navbar.zh,
 
                 // sidebar
-                sidebar: sidebar.zh,
+                sidebar: "auto",
 
                 editLinkText: '在 GitHub 上编辑此页',
                 lastUpdatedText: '上次更新',

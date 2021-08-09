@@ -157,6 +157,7 @@ export default defineComponent({
     const navbarSelectLanguage = useNavbarSelectLanguage()
     const navbarRepo = useNavbarRepo()
 
+    console.log("navebarLinks")
     const navbarLinks = computed(() => [
       ...navbarConfig.value,
       ...navbarSelectLanguage.value,
