@@ -77,7 +77,7 @@ export default defineComponent({
                 return;
               }
               if (route.query.p == null) {
-                return;
+                route.query.p = "1"
               }
               //从路由获取页码
               pageNum.value = Number(route.query.p)
