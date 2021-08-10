@@ -1,4 +1,4 @@
-这是个仍在开发中的主题，但已经可用，如果有对开发vuepress2主题有什么问题或对此主题提出意见可以 [用QQ联系我](tencent://message/?uin=975425198&Site=&Menu=yes)。
+这是个仍在开发中的主题，但已经可用，如果有对开发vuepress2主题有什么问题或对此主题提出意见可以 [用QQ联系我](https://wpa.qq.com/msgrd?v=3&uin=975425198&site=qq&menu=yes)。
 
 目前所有文章为测试内容，均来自 [xugaoyi](https://github.com/xugaoyi/vuepress-theme-vdoing)
 
