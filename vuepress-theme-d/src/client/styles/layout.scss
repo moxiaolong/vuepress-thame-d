@@ -8,6 +8,13 @@
   background-color: var(--c-bg);
 }
 
+.footer {
+  padding: 2.5rem;
+  //border-top: 1px solid var(--c-border);
+  text-align: center;
+  color: var(--c-text-lighter);
+}
+
 .navbar {
   position: fixed;
   z-index: 20;
@@ -171,7 +178,7 @@ h6 {
   }
 
   .page {
-    padding:0;
+    padding: 0;
   }
 
   .theme-container {

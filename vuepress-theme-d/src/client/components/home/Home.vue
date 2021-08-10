@@ -34,11 +34,13 @@
       <post-list/>
     </div>
 
-    <template v-if="footer">
-      <!-- eslint-disable-next-line vue/no-v-html -->
-      <div v-if="footerHtml" class="footer" v-html="footer"/>
-      <div v-else class="footer" v-text="footer"/>
-    </template>
+    <!--    <template v-if="footer">-->
+    <!--      &lt;!&ndash; eslint-disable-next-line vue/no-v-html &ndash;&gt;-->
+    <!--      <div v-if="footerHtml" class="footer" v-html="footer"/>-->
+    <!--      <div v-else class="footer" v-text="footer"/>-->
+    <!--    </template>-->
+
+    <slot name="bottom"/>
   </main>
 </template>
 
@@ -123,7 +125,6 @@ export default defineComponent({
       return []
     })
 
-    const footer = computed(() => frontmatter.value.footer)
 
     const footerHtml = computed(() => frontmatter.value.footerHtml)
 
@@ -138,7 +139,6 @@ export default defineComponent({
       tagline,
       actions,
       features,
-      footer,
       footerHtml,
       isFirstPage
     }

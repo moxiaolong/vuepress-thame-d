@@ -25,7 +25,11 @@
       </template>
     </Sidebar>
 
-    <Home v-if="frontmatter.home" />
+    <Home v-if="frontmatter.home" >
+      <template #bottom>
+        <Footer/>
+      </template>
+    </Home>
 
     <Transition
       v-else
@@ -39,7 +43,7 @@
           <slot name="page-top" />
         </template>
         <template #bottom>
-          <slot name="page-bottom" />
+          <Footer/>
         </template>
       </Page>
     </Transition>
@@ -67,11 +71,13 @@ import {
   useSidebarItems,
   useThemeLocaleData,
 } from '../composables'
+import Footer from "../components/Footer.vue";
 
 export default defineComponent({
   name: 'Layout',
 
   components: {
+    Footer,
     Home,
     Page,
     Navbar,
