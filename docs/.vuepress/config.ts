@@ -105,7 +105,7 @@ export default defineUserConfig<DefaultThemeOptions>({
 
                 // 404 page
                 notFound: [
-                    '存在者存在，不存在者不存在'
+                    '存在者存在，无却不存在'
                 ],
                 backToHome: '返回首页',
 

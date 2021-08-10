@@ -1,0 +1,17 @@
+@import '_variables';
+@import '_wrapper';
+
+.main-card-wrapper {
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: var(--content-width);
+  transform: translate(-50%, -50%);
+
+  .main-card {
+    @extend %wrapper;
+    margin: 0 1rem;
+  }
+}
