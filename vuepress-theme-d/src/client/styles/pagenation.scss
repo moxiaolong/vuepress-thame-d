@@ -8,6 +8,7 @@
   text-align: center;
   box-shadow: none;
   padding-top: 0;
+  transition: background-color ease 0.3s;
 
   span {
     @extend %hover-shadow;

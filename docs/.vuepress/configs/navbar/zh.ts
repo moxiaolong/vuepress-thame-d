@@ -12,7 +12,7 @@ export const zh: NavbarConfig = [
       {
         text: 'VuePress',
         children: [
-          '/baidu.com',
+          '/01.前端/25.JavaScript文章/02.new命令原理.md',
           '/zh/reference/config.md',
           '/zh/reference/frontmatter.md',
           '/zh/reference/components.md',
