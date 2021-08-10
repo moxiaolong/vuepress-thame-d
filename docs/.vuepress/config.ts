@@ -116,6 +116,7 @@ export default defineUserConfig<DefaultThemeOptions>({
         },
 
         themePlugins: {
+            backToTop: true
             // only enable git plugin in production mode
             // git: isProd
         },

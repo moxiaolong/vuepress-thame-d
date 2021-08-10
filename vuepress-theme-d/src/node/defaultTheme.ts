@@ -41,7 +41,7 @@ export const defaultTheme: Theme<DefaultThemeOptions> = ({
         //页面信息回调 获取文章列表
         extendsPageData: (page, app) => {
 
-            if (page.filePathRelative != null && page.filePathRelative.endsWith(".md")&& page.date !== "0000-00-00") {
+            if (page.filePathRelative != null && page.filePathRelative.endsWith(".md") && page.date !== "0000-00-00") {
                 posts.push({
                     date: page.date,
                     title: page.title,
@@ -75,7 +75,7 @@ export const defaultTheme: Theme<DefaultThemeOptions> = ({
                 '@vuepress/active-header-links',
                 resolveActiveHeaderLinksPluginOptions(themePlugins),
             ],
-            // ['@vuepress/back-to-top',false],
+            ['@vuepress/back-to-top', themePlugins.backToTop !== false],
             [
                 '@vuepress/container',
                 resolveContainerPluginOptions(themePlugins, localeOptions, 'tip'),
