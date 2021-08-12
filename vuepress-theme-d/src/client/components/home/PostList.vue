@@ -8,7 +8,7 @@
             <router-link :to="post.path">{{ post.title }}</router-link>
           </h2>
           <div class="article-info">
-            <span>日期:{{ post.date }}</span>
+            <span>日期:{{ post.date.toString().split("T")[0] }}</span>
             <span>目录{{ post.dir }}</span>
           </div>
           <div class="excerpt-wrapper" v-if="post.excerpt">
@@ -34,13 +34,14 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, ref, watchEffect, reactive} from 'vue'
+import {computed, defineComponent, ref, watchEffect} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
 import type {Post} from "../../../shared"
 import PostCard from "./PostCard.vue"
 import Pagination from "./Pagination.vue"
 
 const sourcePosts: Post[] = __POSTS__
+
 
 export default defineComponent({
 

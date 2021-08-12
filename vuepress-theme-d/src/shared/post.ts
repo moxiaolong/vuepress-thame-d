@@ -1,7 +1,8 @@
 import {Dir} from "./dir";
 
 export interface Post {
-    date: string
+    index:number
+    date: Date
     title?: string
     //简介
     excerpt?: string

@@ -40,16 +40,17 @@ export const defaultTheme: Theme<DefaultThemeOptions> = ({
     return {
         //页面信息回调 获取文章列表
         extendsPageData: (page, app) => {
-
             if (page.filePathRelative != null && page.filePathRelative.endsWith(".md") && page.date !== "0000-00-00") {
                 posts.push({
-                    date: page.date,
+                    index: 0,
+                    date: new Date(page.date),
                     title: page.title,
                     excerpt: page.excerpt,
                     path: page.path
                 })
             }
         },
+
 
         //定义常量 可以在客户端使用
         define: {
@@ -67,6 +68,17 @@ export const defaultTheme: Theme<DefaultThemeOptions> = ({
 
         clientAppSetupFiles: path.resolve(__dirname, '../client/clientAppSetup.js'),
 
+        onPrepared: () => {
+            //按照日期排序
+            posts = posts.sort(((a, b) => b.date.getTime() - a.date.getTime()))
+
+
+            //保存index到post 为了连接上下篇
+            for (let i = 0; i < posts.length; i++) {
+                posts[i].index = i
+            }
+
+        },
         // // use the relative file path to generate edit link
         // extendsPageData: ({filePathRelative}) => ({filePathRelative}),
 

@@ -18,6 +18,7 @@
 import { defineComponent } from 'vue'
 import PageMeta from './PageMeta.vue'
 import PageNav from './PageNav.vue'
+import {usePageFrontmatter ,usePageData } from '@vuepress/client'
 
 export default defineComponent({
   name: 'Page',
@@ -27,6 +28,10 @@ export default defineComponent({
     PageNav,
   },
   setup(){
+    let computedRef = usePageFrontmatter();
+    let ref = usePageData();
+    console.log(ref)
+    console.log(computedRef.value)
     console.log("page setup")
   }
 
